@@ -45,9 +45,11 @@ const FLEET: FleetItem[] = [
     type: "Flatbed",
     length: 48,
     sampleRate: "$40 / day",
-    // STRICT per owner: only Transcraft 48' combo from Granite City; keep placeholder until photo added
-    placeholderCaption:
-      "Equipment example — 2023 Transcraft combo (photo coming) · Granite City IL",
+    // STRICT per owner: only Transcraft 48' combo from Granite City
+    heroSrc: "/fleet/fb48-transcraft-hero.jpg",
+    heroAlt: "2023 Transcraft 48’ combo flatbed, dealer photo (River-Roads)",
+    caption:
+      "Equipment example — not Tenfour fleet. Still at dealer. 2023 Transcraft combo · Granite City IL",
     listingUrl:
       "https://www.truckpaper.com/listing/for-sale/258460883/2023-transcraft-48-ft-x-102-in-combination",
     listingLabel: "TruckPaper listing (River-Roads)"
