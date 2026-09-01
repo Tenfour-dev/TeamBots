@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grid-size: 88px;
+  --grid-color: #a01e1e22; /* translucent red */
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+/* Paper background with 88px red grid overlay */
+body {
+  background:
+    linear-gradient(var(--grid-color) 2px, transparent 2px) 0 0 / 100% var(--grid-size),
+    linear-gradient(90deg, var(--grid-color) 2px, transparent 2px) 0 0 / var(--grid-size) 100%,
+    #fdfcfb;
+}
+
+/* Headings: uppercase condensed */
+h1, h2, h3, .heading-condensed {
+  @apply font-barlowCondensed uppercase tracking-wide;
+}
+
+.container-xl {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-colors;
+}
+.btn-primary {
+  @apply bg-brand-red text-white hover:bg-brand-redDark;
+}
+.btn-outline {
+  @apply border border-brand-red text-brand-red hover:bg-brand-rose;
+}
+
+/* Shared input style */
+.input {
+  @apply w-full rounded-md border border-brand-parchment px-3 py-2 outline-none focus:ring-2 focus:ring-brand-red/40 bg-white;
+}
