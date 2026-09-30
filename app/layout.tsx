@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./preferred.css";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 
 const barlow = Barlow({
@@ -15,14 +16,16 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "TENFOUR | Trailer Rentals",
-  description: "TenFour LLC — Dry van & flatbed trailer rentals across CT & New England."
+  title: "Specialized Trailer Rental | Preferred Trucking LLC",
+  description:
+    "Rent an Alpha HD extendable detachable-gooseneck trailer from Preferred Trucking LLC for $3,000 per month. Explore specifications and request availability.",
+  themeColor: "#171b1c"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
-      <body className="min-h-screen bg-brand-paper text-brand-ink">
+      <body className="min-h-screen">
         {children}
       </body>
     </html>
