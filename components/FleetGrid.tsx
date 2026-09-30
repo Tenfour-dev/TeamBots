@@ -121,6 +121,19 @@ export default function FleetGrid({ query }: { query: string }) {
             </div>
           </article>
         ))}
+        <article className="rounded-lg border border-brand-parchment bg-white shadow-sm overflow-hidden">
+          <div className="p-4 space-y-2">
+            <div className="heading-condensed text-sm text-brand-stone">Specialized equipment</div>
+            <div className="heading-condensed text-lg">2028 Alpha HD A80HDG-E</div>
+            <div className="text-sm text-brand-stone">Extendable hydraulic-detach RGN / lowboy</div>
+            <div className="text-sm">
+              <span className="heading-condensed">Rent:</span> $3,500 / month
+            </div>
+            <a href="/rentals/alpha-hd-a80hdg-e" className="btn btn-primary w-full mt-2">
+              View rental details
+            </a>
+          </div>
+        </article>
       </div>
     </section>
   );
