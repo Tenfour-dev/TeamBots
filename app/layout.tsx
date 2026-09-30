@@ -18,7 +18,10 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   title: "Specialized Trailer Rental | Preferred Trucking LLC",
   description:
-    "Rent an Alpha HD extendable detachable-gooseneck trailer from Preferred Trucking LLC for $3,000 per month. Explore specifications and request availability.",
+    "Rent an Alpha HD extendable detachable-gooseneck trailer from Preferred Trucking LLC for $3,000 per month. Explore specifications and request availability."
+};
+
+export const viewport = {
   themeColor: "#171b1c"
 };
 
