@@ -1,9 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PreferredTruckingLanding() {
   const [status, setStatus] = useState<string>("");
+  const gallery: string[] = [
+    "/gallery/inv-1.jpg",
+    "/gallery/inv-2.jpg",
+    "/gallery/inv-3.jpg",
+    "/gallery/inv-4.jpg",
+    "/gallery/inv-5.jpg",
+    "/gallery/inv-6.jpg",
+    "/gallery/inv-7.jpg",
+    "/gallery/inv-8.jpg",
+    "/gallery/inv-9.jpg",
+    "/gallery/inv-10.jpg",
+    "/gallery/inv-11.jpg",
+    "/gallery/inv-12.jpg",
+    "/gallery/inv-14.jpg",
+    "/gallery/inv-16.jpg",
+    "/gallery/inv-17.jpg",
+    "/gallery/inv-18.jpg",
+    "/gallery/inv-19.jpg",
+    "/gallery/inv-20.jpg"
+  ];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight") setLightboxIndex((i) => (i === null ? null : (i + 1) % gallery.length));
+      if (e.key === "ArrowLeft") setLightboxIndex((i) => (i === null ? null : (i - 1 + gallery.length) % gallery.length));
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIndex, gallery.length]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -97,7 +129,7 @@ Thank you.`;
             </div>
             <div className="photo-wrap">
               <img
-                src="/trailer.jpg"
+                src="/gallery/inv-1.jpg"
                 alt="Representative Alpha HD A80HDGC-E trailer, not the ordered unit"
                 width={1400}
                 height={900}
@@ -144,6 +176,28 @@ Thank you.`;
             <strong>
               20 <span>in</span>
             </strong>
+          </div>
+        </section>
+
+        <section className="photos section" id="photos" aria-label="Photo gallery">
+          <div className="section-heading">
+            <p className="eyebrow">01A / PHOTOS</p>
+            <h2>See more angles</h2>
+            <p className="section-note">Listing photos of the Alpha HD A80HDGC‑E family. Actual unit offered may differ.</p>
+          </div>
+          <div>
+            <div className="gallery-grid">
+              {gallery.map((src, idx) => (
+                <button
+                  key={src}
+                  className="gallery-thumb"
+                  aria-label={`Open photo ${idx + 1}`}
+                  onClick={() => setLightboxIndex(idx)}
+                >
+                  <img src={src} alt="" />
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -401,6 +455,27 @@ Thank you.`;
         </section>
       </main>
 
+      {lightboxIndex !== null && (
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+          <button
+            className="lightbox-close"
+            aria-label="Close"
+            onClick={() => setLightboxIndex(null)}
+          >
+            Close
+          </button>
+          <img src={gallery[lightboxIndex]} alt={`Photo ${lightboxIndex + 1}`} />
+          <div className="lightbox-controls" aria-hidden>
+            <button onClick={() => setLightboxIndex((i) => (i === null ? 0 : (i - 1 + gallery.length) % gallery.length))}>
+              ‹ Prev
+            </button>
+            <button onClick={() => setLightboxIndex((i) => (i === null ? 0 : (i + 1) % gallery.length))}>
+              Next ›
+            </button>
+          </div>
+        </div>
+      )}
+
       <footer>
         <a className="brand" href="#top">
           <span className="brand-mark">
@@ -414,13 +489,7 @@ Thank you.`;
         <span>
           © <span id="year">{year}</span> Preferred Trucking LLC
           <br />
-          <a
-            href="https://alphahdtrailers.com/products/commercial/a80hdgc-e/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Representative photo © Alpha HD Trailers
-          </a>
+          <span>Representative photos of the A80HDGC‑E family shown. Actual equipment may differ.</span>
         </span>
       </footer>
     </>
